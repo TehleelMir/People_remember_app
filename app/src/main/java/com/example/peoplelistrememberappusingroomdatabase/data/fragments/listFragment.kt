@@ -1,5 +1,6 @@
 package com.example.peoplelistrememberappusingroomdatabase.data.fragments
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -12,6 +13,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.peoplelistrememberappusingroomdatabase.R
 import com.example.peoplelistrememberappusingroomdatabase.data.User
 import com.example.peoplelistrememberappusingroomdatabase.data.UserViewModal
+import com.example.peoplelistrememberappusingroomdatabase.relationalDatabaseExample.MainActivity2
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 
 class listFragment() : Fragment(), ListAdapter.UpdateUserCallBack {
@@ -30,6 +32,10 @@ class listFragment() : Fragment(), ListAdapter.UpdateUserCallBack {
             fragmentTransaction.replace(R.id.frameLayout, addItemFragment("ADD_ITEM"))
             fragmentTransaction.addToBackStack("")
             fragmentTransaction.commit()
+        }
+        fab.setOnLongClickListener {
+            startActivity(Intent(activity, MainActivity2::class.java))
+            true
         }
         val recyclerView = view.findViewById<RecyclerView>(R.id.recyclerView)
         recyclerView.layoutManager = LinearLayoutManager(requireContext())
